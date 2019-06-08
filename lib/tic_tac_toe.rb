@@ -46,38 +46,38 @@ def turn(board)
 end
 
 def turn_count(board)
-    counter = 0
-    board.each do |el| 
-      if el == "X" || el == "O"
-        counter += 1
-      end
-    end
-    counter
-  end
-  
-  def current_player(board)
-    turn_count(board) % 2 == 0 ? "X" : "O"
-  end
-  
-  def won?(board)
-    WIN_COMBINATIONS.find do |win_combo|
-      board[win_combo[0]] == board[win_combo[1]] && board[win_combo[1]] == board[win_combo[2]] && position_taken?(board, win_combo[0])
-    end 
-  end
-  
-  def full?(board)
-    board.all? do |index|
-      index == "X" || index == "O"
+  counter = 0
+  board.each do |el| 
+    if el == "X" || el == "O"
+      counter += 1
     end
   end
+  counter
+end
   
-  def draw?(board)
-    full?(board) && !won?(board) 
-  end
+def current_player(board)
+  turn_count(board) % 2 == 0 ? "X" : "O"
+end
   
-  def over?(board)
-    won?(board) || draw?(board) || full?(board) 
+def won?(board)
+  WIN_COMBINATIONS.find do |win_combo|
+    board[win_combo[0]] == board[win_combo[1]] && board[win_combo[1]] == board[win_combo[2]] && position_taken?(board, win_combo[0])
+  end 
+end
+  
+def full?(board)
+  board.all? do |index|
+    index == "X" || index == "O"
   end
+end
+  
+def draw?(board)
+  full?(board) && !won?(board) 
+end
+  
+def over?(board)
+  won?(board) || draw?(board) || full?(board) 
+end
   
 def winner(board)
   won?(board) ? board[won?(board)[0]] : nil
