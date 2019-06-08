@@ -58,3 +58,14 @@ def turn_count(board)
   def current_player(board)
     turn_count(board) % 2 == 0 ? "X" : "O"
   end
+  
+  def won?(board)
+    WIN_COMBINATIONS.find do |win_combo|
+      board[win_combo[0]] == board[win_combo[1]] && board[win_combo[1]] == board[win_combo[2]] && position_taken?(board, win_combo[0])
+    end 
+  end
+  
+  
+  
+  
+  
