@@ -79,9 +79,9 @@ def turn_count(board)
     won?(board) || draw?(board) || full?(board) 
   end
   
-  def winner(board)
-    won?(board) ? board[won?(board)[0]] : nil
-  end
+def winner(board)
+  won?(board) ? board[won?(board)[0]] : nil
+end
   
 def play 
 end
